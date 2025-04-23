@@ -5,15 +5,31 @@ public class MeshIntersectionFinder : MonoBehaviour
 {
     public static Vector3 IntersectionPoint;
     public MeshFilter targetMeshFilter; // Assign in Inspector
+    public Transform trackedObject; // The GameObject whose rotation we're tracking
 
-    // Event that triggers when an intersection point is updated
+    private Quaternion initialRotation; // Stores rotation at press start
+
+    // Unity Event to notify when an intersection is found
     public static UnityEvent<Vector3> OnIntersectionPointUpdated = new UnityEvent<Vector3>();
 
     void Update()
     {
+        // When mouse button is pressed, store the current rotation
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (trackedObject != null)
+            {
+                initialRotation = trackedObject.rotation; // Capture rotation at press start
+            }
+        }
+
+        // When button is released, check rotation before finding intersection
         if (Input.GetMouseButtonUp(0))
         {
-            FindMeshIntersection(Input.mousePosition);
+            if (trackedObject != null && trackedObject.rotation == initialRotation)
+            {
+                FindMeshIntersection(Input.mousePosition); // Only check if rotation is unchanged
+            }
         }
     }
 
