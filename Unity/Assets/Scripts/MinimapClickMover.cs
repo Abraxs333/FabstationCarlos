@@ -12,7 +12,8 @@ public class MinimapClickMover : MonoBehaviour
     public RawImage minimapUI;        // The minimap render texture displayed in a UI RawImage
 
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;      // Speed for moving the main camera
+    public float moveSpeed = 3f;      // Speed for moving the main camera
+    public float camrotationSpeed = .25f;// Speed for rotating the main camera
     public LayerMask raycastLayerMask; // (Optional) Only hit objects on these layers
 
     // Internal state
@@ -106,14 +107,65 @@ public class MinimapClickMover : MonoBehaviour
     // Smoothly moves the main camera to the target position.
     IEnumerator MoveMainCameraTo(Vector3 targetPosition)
     {
+        // Step 1: Pre-Lerp Camera Rotation to Face Target Smoothly
+        Quaternion startRotation = mainCamera.transform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(ObjecttoFocus.position - mainCamera.transform.position);
+
+        
+        float elapsedRotationTime = 0f;
+
+        while (elapsedRotationTime < camrotationSpeed)
+        {
+            elapsedRotationTime += Time.deltaTime;
+            mainCamera.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, elapsedRotationTime / camrotationSpeed);
+            yield return null;
+        }
+
+
         while (Vector3.Distance(mainCamera.transform.position, targetPosition) > 0.1f)
         {
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            // Smoothly move the camera toward the target position
+            mainCamera.transform.position = Vector3.MoveTowards(mainCamera.transform.position, targetPosition, moveSpeed * Time.deltaTime);
             mainCamera.transform.LookAt(ObjecttoFocus);
             yield return null;
         }
+
+        // Ensure final position is exactly at the target
+        StartCoroutine(SmoothFinalAdjustment(targetPosition));
     }
 
-    
+    IEnumerator SmoothFinalAdjustment(Vector3 targetPosition)
+    {
+        
+        
+        float elapsedTime = 0f;
+        
 
+        Vector3 startPosition = mainCamera.transform.position;
+        Quaternion startRotation = mainCamera.transform.rotation;
+
+        // Calculate final rotation offset (increase X angle by 10 degrees)
+        Quaternion finalRotation = Quaternion.Euler(mainCamera.transform.eulerAngles.x + 15f,
+                                                     mainCamera.transform.eulerAngles.y,
+                                                     mainCamera.transform.eulerAngles.z);
+
+        while (elapsedTime < camrotationSpeed)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Smoothly interpolate position
+            mainCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / camrotationSpeed);
+
+            // Smoothly interpolate rotation
+            mainCamera.transform.rotation = Quaternion.Lerp(startRotation, finalRotation, elapsedTime / camrotationSpeed);
+
+            yield return null;
+        }
+
+        // Ensure final snap at exact position and rotation
+        mainCamera.transform.position = targetPosition;
+        mainCamera.transform.rotation = finalRotation;
+    }
 }
+
+
