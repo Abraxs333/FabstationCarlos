@@ -91,12 +91,14 @@ public class MinimapClickMover : MonoBehaviour
         if (Physics.Raycast(currentRay, out hitInfo, 1000f, raycastLayerMask))
         {
             raycastHitFound = true;
-            Debug.Log("Minimap Raycast hit: " + hitInfo.collider.gameObject.name);
+            LogTools.Print(this, LogTools.LogType.Minimap, "Minimap Raycast hit: " + hitInfo.collider.gameObject.name);
         }
         else
         {
             raycastHitFound = false;
         }
+        
+
     }
 
     // Smoothly moves the main camera to the target position.
@@ -108,4 +110,7 @@ public class MinimapClickMover : MonoBehaviour
             yield return null;
         }
     }
+
+    
+
 }

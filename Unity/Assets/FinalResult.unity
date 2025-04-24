@@ -454,6 +454,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22, y: 0.88, z: 0.22}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &285951950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 285951951}
+  - component: {fileID: 285951952}
+  - component: {fileID: 285951953}
+  - component: {fileID: 285951954}
+  m_Layer: 0
+  m_Name: AngleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &285951951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285951950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 809806906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &285951952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285951950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f88f1e9096907c45b5501478b45c1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  pointA: {x: 0, y: 0, z: 0}
+  pivotPoint: {x: 0, y: 0, z: 0}
+  pointB: {x: 0, y: 0, z: 0}
+  angleLabelManager: {fileID: 285951953}
+  pointMarkerManager: {fileID: 285951954}
+--- !u!114 &285951953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285951950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbb4a01455871a478a6f91d2f6a247d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textLabelPrefab: {fileID: 3395128099930308498, guid: 0ac0ae340b0904c4895ad1e844733858, type: 3}
+  mainCamera: {fileID: 847724379}
+  labelOffset: {x: -0.2, y: 0.2, z: -0.2}
+--- !u!114 &285951954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285951950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2ae23632813094ba3ad6310c35d058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointMarkerPrefab: {fileID: 6939721300210694187, guid: 7c94f055904f38247b43e7ed56f59b88, type: 3}
+  pivotMarkerPrefab: {fileID: 6939721300210694187, guid: 5f5c0326185a73e46b8962fc2805d690, type: 3}
+  lineMaterial: {fileID: 2100000, guid: 0733e2b16ba3e7047af0397a9878e181, type: 2}
+  arcMaterial: {fileID: 2100000, guid: c1a2babdfb385db4a9ed6985e88d36cc, type: 2}
 --- !u!1001 &300257943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -839,6 +922,37 @@ MonoBehaviour:
     _isExpanded: 1
     _lineColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.40000004}
     _useCellFading: 1
+--- !u!1 &510749182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 510749183}
+  m_Layer: 0
+  m_Name: -------- PlaceHolder ---------- (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &510749183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510749182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &513913819
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 809806906}
   m_Layer: 0
-  m_Name: -------- PlaceHolder ---------- (1)
+  m_Name: -------- Angles----------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4308,7 +4422,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 285951951}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814019845
@@ -4473,7 +4588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &930297181
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5538,3 +5653,4 @@ SceneRoots:
   - {fileID: 1502684365}
   - {fileID: 1326607915}
   - {fileID: 809806906}
+  - {fileID: 510749183}

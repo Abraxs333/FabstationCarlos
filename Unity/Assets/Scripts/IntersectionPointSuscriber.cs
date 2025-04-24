@@ -19,7 +19,7 @@ public class IntersectionPointSubscriber : MonoBehaviour
 
     void HandleIntersectionUpdate(Vector3 newPoint)
     {
-        Debug.Log("Reacting to intersection at: " + newPoint);
+        LogTools.Print(this, LogTools.LogType.Input, "Reacting to intersection at: " + newPoint);
 
         // Invoke events so they can be set in the Editor
         OnIntersectionDetected.Invoke(newPoint);

@@ -69,7 +69,7 @@ public class MeshIntersectionFinder : MonoBehaviour
             IntersectionPoint = closestPoint;
             OnIntersectionPointUpdated.Invoke(IntersectionPoint); // Trigger event
 
-            Debug.Log("Intersection recorded at: " + IntersectionPoint);
+            LogTools.Print(this, LogTools.LogType.Input, "Intersection recorded at: " + IntersectionPoint);
         }
     }
 

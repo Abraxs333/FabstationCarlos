@@ -34,7 +34,7 @@ namespace RTG
 
         public void ChangePivot(Vector3 _NewPivot)
         {
-            Debug.Log("Started the Change Pivot Method" + _NewPivot);
+            LogTools.Print(this, LogTools.LogType.Rotation, "Started the Change Pivot Method" + _NewPivot);
 
           
             OBB worldOBB = ObjectBounds.GetMeshWorldOBB(ObjectToRotate);
