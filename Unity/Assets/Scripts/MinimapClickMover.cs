@@ -101,12 +101,15 @@ public class MinimapClickMover : MonoBehaviour
 
     }
 
+    public Transform ObjecttoFocus;
+
     // Smoothly moves the main camera to the target position.
     IEnumerator MoveMainCameraTo(Vector3 targetPosition)
     {
-        while (Vector3.Distance(mainCamera.transform.position, targetPosition) > 0.1f)
+        while (Vector3.Distance(mainCamera.transform.position, targetPosition) > 0.5f)
         {
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            mainCamera.transform.LookAt(ObjecttoFocus);
             yield return null;
         }
     }
