@@ -71,4 +71,21 @@ public class AngleCaptureSystem : MonoBehaviour
         angleLabelManager.UpdateAngleLabel(pivotPoint, angle);
 
     }
+
+    public void ResetSystem()
+    {
+        LogTools.Print(this, LogTools.LogType.Angle, "Resetting system...");
+
+        // Reset state to first step
+        currentState = CaptureState.WaitingForPointA;
+
+        // Clear stored points
+        pointA = Vector3.zero;
+        pivotPoint = Vector3.zero;
+        pointB = Vector3.zero;
+
+        // Clear all markers and lines
+        pointMarkerManager.ClearAllMarkers();
+    }
+
 }

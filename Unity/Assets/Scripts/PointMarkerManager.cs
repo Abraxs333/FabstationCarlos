@@ -151,4 +151,29 @@ public class PointMarkerManager : MonoBehaviour
         arcMeshFilter.mesh = arcMesh;
         arcMeshFilter.transform.position = pivotPoint;
     }
+
+    public void ClearAllMarkers()
+    {
+        LogTools.Print(this, LogTools.LogType.Angle, "Clearing all markers and lines...");
+
+        // Destroy all existing markers
+        foreach (GameObject marker in GameObject.FindGameObjectsWithTag("Marker"))
+        {
+            Destroy(marker);
+        }
+
+
+
+        // Destroy line renderers
+        if (lineAP != null) Destroy(lineAP.gameObject);
+        if (lineBP != null) Destroy(lineBP.gameObject);
+
+        isPointAAssigned = false;
+        isPivotPointAssigned = false;
+        isPointBAssigned = false;
+
+        // Destroy arc mesh if exists
+        if (arcMeshFilter != null) Destroy(arcMeshFilter.gameObject);
+    }
+
 }

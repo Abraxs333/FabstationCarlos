@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3395128099930308498}
   - component: {fileID: 7222473468807152608}
   m_Layer: 0
-  m_Name: AgleLabel
-  m_TagString: Untagged
+  m_Name: AngleLabel
+  m_TagString: Marker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
