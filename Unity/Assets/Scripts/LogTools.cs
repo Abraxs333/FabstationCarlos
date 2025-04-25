@@ -2,7 +2,7 @@
 
 public static class LogTools
 {
-    public enum LogType { Angle, Rotation, Minimap, Input, UI, Undefined }
+    public enum LogType { Angle, Rotation, Minimap, Input, UI, GameManager, StateEvent }
 
     /// <summary>
     /// Prints a formatted log message with the script name and log type.
