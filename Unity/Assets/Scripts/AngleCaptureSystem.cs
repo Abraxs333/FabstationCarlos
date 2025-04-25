@@ -22,7 +22,7 @@ public class AngleCaptureSystem : MonoBehaviour
     {
         // Subscribe to the IntersectionPointSubscriber event
         IntersectionPointSubscriber.OnIntersectionDetected.AddListener(HandleIntersection);
-        GameManager.Instance.writeInstructions("Please Select Point A");
+        if (GameManager.Instance!=null) GameManager.Instance.writeInstructions("Please Select Point A");
     }
 
     void OnDisable()
@@ -77,7 +77,7 @@ public class AngleCaptureSystem : MonoBehaviour
     public void ResetSystem()
     {
         LogTools.Print(this, LogTools.LogType.Angle, "Resetting system...");
-
+        if (GameManager.Instance != null) GameManager.Instance.writeInstructions("Please Select Point A");
         // Reset state to first step
         currentState = CaptureState.WaitingForPointA;
 
