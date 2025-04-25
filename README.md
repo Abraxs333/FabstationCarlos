@@ -6,6 +6,7 @@ This Unity project introduces a **comprehensive system** for game state manageme
 [Watch Demo](https://1drv.ms/v/c/620e69615af8077e/EYilltzRixZMs0k-ytYbbpYBfAfmRf02Laez2I5hW1ymWg?e=AiXFep)
 
 
+
 ## Features
 ### 🎮 **Game State Manager (Singleton)**
 - Handles multiple states like **Measure Angle, Pivot Rotation, Minimap, Part Selector, Tools, and View Change**.
@@ -37,6 +38,11 @@ This Unity project introduces a **comprehensive system** for game state manageme
 - UI elements **block raycasts** correctly.
 - **Unity Events integration** for easy event-driven functionality.
 - **Scene restart button** for seamless reloading.
+- ![Base View](images/Base View.png)
+- ![Extended UI](images/Extended_UI.png)
+- ![Rotation Gizmos](images/Rotation_Gizmos.png)
+- ![Angle Measurement](images/Angle_Measurement.png)
+
 
 ---
 
