@@ -5,6 +5,8 @@ This Unity project introduces a **comprehensive system** for game state manageme
 
 [Watch Demo](https://1drv.ms/v/c/620e69615af8077e/EYilltzRixZMs0k-ytYbbpYBfAfmRf02Laez2I5hW1ymWg?e=AiXFep)
 
+<video src="videos/2025 - XR 3D Model Viewer and UI.mp4" width="600" controls>
+
 
 ## Features
 ### 🎮 **Game State Manager (Singleton)**
@@ -37,6 +39,11 @@ This Unity project introduces a **comprehensive system** for game state manageme
 - UI elements **block raycasts** correctly.
 - **Unity Events integration** for easy event-driven functionality.
 - **Scene restart button** for seamless reloading.
+- ![Base View](images/Base View.png)
+- ![Extended UI](images/Extended UI.png)
+- ![Rotation Gizmos](images/Rotation Gizmos.png)
+- ![Angle Measurement](images/Angle Measurement.png)
+
 
 ---
 
