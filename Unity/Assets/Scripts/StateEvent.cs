@@ -13,6 +13,8 @@ public class StateEvent : ScriptableObject
 
     public void Invoke()
     {
+        LogTools.Print(this, LogTools.LogType.StateEvent, "Raising Suscribed Events...");
+
         foreach (var listener in listeners)
         {
             listener.RaiseEvent();

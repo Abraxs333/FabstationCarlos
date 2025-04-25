@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        GlobalVariables.Instance.TargetObjectInitialTransform = TargetObject;
+        GlobalVariables.Instance.CameraInitialTransform = Camera.main.transform;
         Intructions.text = defaultInstructionsMessage;
     }
 
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
     string defaultInstructionsMessage = "Please select an option from the menu to start";
     string TransitionText = "Initializing system, please wait";
 
+    [SerializeField] Transform TargetObject;
+    
 
     /// <summary>
     /// Public function to change the state.
@@ -94,6 +98,7 @@ public class GameManager : MonoBehaviour
         LogTools.Print(this, LogTools.LogType.GameManager, "Entering Measure Angle state.");
         Intructions.text = TransitionText;
         onMeasureAngleStarted?.Invoke();
+        Intructions.text = onMeasureAngleStarted.Instructions;
     }
 
     private void HandlePivotRotationState()
@@ -142,4 +147,14 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public void writeInstructions(string newInstruction)
+    {
+        Intructions.text+= newInstruction;
+    }
+
+    public void resetView()
+    {
+
+    }
 }
