@@ -39,9 +39,9 @@ This Unity project introduces a **comprehensive system** for game state manageme
 - **Unity Events integration** for easy event-driven functionality.
 - **Scene restart button** for seamless reloading.
 - ![Base View](images/Base View.png)
-- ![Extended UI](images/Extended UI.png)
-- ![Rotation Gizmos](images/Rotation Gizmos.png)
-- ![Angle Measurement](images/Angle Measurement.png)
+- ![Extended UI](images/Extended_UI.png)
+- ![Rotation Gizmos](images/Rotation_Gizmos.png)
+- ![Angle Measurement](images/Angle_Measurement.png)
 
 
 ---
