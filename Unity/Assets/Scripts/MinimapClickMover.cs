@@ -47,6 +47,7 @@ public class MinimapClickMover : MonoBehaviour
             isClickingMinimap = false;
             if (raycastHitFound)
             {
+                StopAllCoroutines();
                 StartCoroutine(MoveMainCameraTo(hitInfo.point));
             }
         }

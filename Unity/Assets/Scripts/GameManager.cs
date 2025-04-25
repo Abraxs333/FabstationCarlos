@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using static UnityEditor.PlayerSettings;
 
 
 public class GameManager : MonoBehaviour
@@ -26,9 +27,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GlobalVariables.Instance.TargetObjectInitialTransform = TargetObject;
-        GlobalVariables.Instance.CameraInitialTransform = Camera.main.transform;
+        GlobalVariables.Instance.StoreCameraInitialValues(Camera.main.transform);
+        GlobalVariables.Instance.StoreTargetObjectInitialValues(TargetObject.transform);
+        onResetStateEvent?.Invoke();
         Intructions.text = defaultInstructionsMessage;
+
     }
 
     [SerializeField] StateEvent onResetStateEvent;
@@ -44,7 +47,7 @@ public class GameManager : MonoBehaviour
     string TransitionText = "Initializing system, please wait";
 
     [SerializeField] Transform TargetObject;
-    
+
 
     /// <summary>
     /// Public function to change the state.
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
 
         CurrentState = newState;
 
-        LogTools.Print(this, LogTools.LogType.GameManager, "Reseting Game States...") ;
+        LogTools.Print(this, LogTools.LogType.GameManager, "Reseting Game States...");
         onResetStateEvent?.Invoke();
 
         // Log the state change using our custom LogTools
@@ -150,11 +153,33 @@ public class GameManager : MonoBehaviour
 
     public void writeInstructions(string newInstruction)
     {
-        Intructions.text+= newInstruction;
+        Intructions.text = newInstruction;
     }
 
     public void resetView()
     {
+        LogTools.Print(this, LogTools.LogType.GameManager, "Resetting View");
+
+        if (GlobalVariables.Instance.CameraInitialPosition != null)
+        {
+
+            LogTools.Print(this, LogTools.LogType.GameManager, "Initial pos = " + GlobalVariables.Instance.CameraInitialPosition + "  Current Pos = " + Camera.main.transform.position);
+
+            Camera.main.transform.position = GlobalVariables.Instance.CameraInitialPosition;
+            Camera.main.transform.rotation = GlobalVariables.Instance.CameraInitialRotation;
+            Camera.main.transform.localScale = GlobalVariables.Instance.CameraInitialScale;
+        
+
+
+        LogTools.Print(this, LogTools.LogType.GameManager, "Finished Code block printing data again Initial pos = " + GlobalVariables.Instance.CameraInitialPosition + "  Current Pos = " + Camera.main.transform.position);
+        }
+
+        if (GlobalVariables.Instance.TargetObjectInitialPosition != null)
+        {
+            TargetObject.transform.position = GlobalVariables.Instance.TargetObjectInitialPosition;
+            TargetObject.transform.rotation = GlobalVariables.Instance.TargetObjectInitialRotation;
+            TargetObject.transform.localScale = GlobalVariables.Instance.TargetObjectInitialScale;
+        }
 
     }
 }

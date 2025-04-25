@@ -2,26 +2,42 @@ using UnityEngine;
 
 public class GlobalVariables
 {
-    // Singleton instance
     private static GlobalVariables instance;
-
-    // Public property to access the instance
     public static GlobalVariables Instance
     {
         get
         {
             if (instance == null)
-                instance = new GlobalVariables(); // Create instance on first access
+                instance = new GlobalVariables();
             return instance;
         }
     }
 
-    // Private constructor prevents external instantiation
-    private GlobalVariables() { }
+    // Stored values for Camera
+    public Vector3 CameraInitialPosition { get; private set; }
+    public Quaternion CameraInitialRotation { get; private set; }
+    public Vector3 CameraInitialScale { get; private set; }
 
-    // Global variables
-    public Transform TargetObjectInitialTransform { get; set; }
-    public Transform CameraInitialTransform { get; set; }
+    // Stored values for Target Object
+    public Vector3 TargetObjectInitialPosition { get; private set; }
+    public Quaternion TargetObjectInitialRotation { get; private set; }
+    public Vector3 TargetObjectInitialScale { get; private set; }
+
+    // Store initial values for the Camera
+    public void StoreCameraInitialValues(Transform cameraTransform)
+    {
+        CameraInitialPosition = cameraTransform.position;
+        CameraInitialRotation = cameraTransform.rotation;
+        CameraInitialScale = cameraTransform.localScale;
+    }
+
+    // Store initial values for the Target Object
+    public void StoreTargetObjectInitialValues(Transform targetTransform)
+    {
+        TargetObjectInitialPosition = targetTransform.position;
+        TargetObjectInitialRotation = targetTransform.rotation;
+        TargetObjectInitialScale = targetTransform.localScale;
+    }
 }
 
 public enum GameState

@@ -11,10 +11,12 @@ namespace RTG
         void OnEnable()
         {
             IntersectionPointSubscriber.OnIntersectionDetected.AddListener(ChangePivot);
+            if(objectTransformGizmo!=null) objectTransformGizmo.Gizmo.SetEnabled(true);
         }
 
         void OnDisable()
         {
+            if (objectTransformGizmo != null) objectTransformGizmo.Gizmo.SetEnabled(false);
             IntersectionPointSubscriber.OnIntersectionDetected.RemoveListener(ChangePivot);
         }
 
@@ -26,14 +28,21 @@ namespace RTG
 
         void Start()
         {
+            //CreateGizmo();
+
+        }
+
+        void CreateGizmo()
+        {
             objectTransformGizmo = RTGizmosEngine.Get.CreateObjectRotationGizmo();
             objectTransformGizmo.SetTargetObject(ObjectToRotate);
-
+            
         }
 
 
         public void ChangePivot(Vector3 _NewPivot)
         {
+            if (objectTransformGizmo == null) CreateGizmo();
             LogTools.Print(this, LogTools.LogType.Rotation, "Started the Change Pivot Method" + _NewPivot);
 
           

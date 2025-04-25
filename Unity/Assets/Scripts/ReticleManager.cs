@@ -16,6 +16,9 @@ public class ReticleManager : MonoBehaviour
 
     void Update()
     {
+
+        if (GameManager.Instance.CurrentState != GameState.MeasureAngle && GameManager.Instance.CurrentState != GameState.PivotRotation) return;
+        
         // Show reticle and check intersection when pressing
         if (Input.GetMouseButton(0))
         {

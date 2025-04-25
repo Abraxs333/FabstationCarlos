@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 
 public class AngleCaptureSystem : MonoBehaviour
@@ -21,7 +22,7 @@ public class AngleCaptureSystem : MonoBehaviour
     {
         // Subscribe to the IntersectionPointSubscriber event
         IntersectionPointSubscriber.OnIntersectionDetected.AddListener(HandleIntersection);
-        LogTools.Print(this, LogTools.LogType.Angle, "Please Select Point A");
+        GameManager.Instance.writeInstructions("Please Select Point A");
     }
 
     void OnDisable()
@@ -39,7 +40,8 @@ public class AngleCaptureSystem : MonoBehaviour
                 LogTools.Print(this, LogTools.LogType.Angle, "Point A recorded: " + pointA);
                 pointMarkerManager.PlaceMarker(pointA, "Point A"); // Place Marker                
                 currentState = CaptureState.WaitingForPivot; // Move to next state
-                LogTools.Print(this, LogTools.LogType.Angle, "Please Select Pivot Point");
+                GameManager.Instance.writeInstructions("Please Pivot Point");
+
                 break;
 
             case CaptureState.WaitingForPivot:
@@ -48,7 +50,7 @@ public class AngleCaptureSystem : MonoBehaviour
                 pointMarkerManager.PlaceMarker(pivotPoint, "Pivot Point"); 
                
                 currentState = CaptureState.WaitingForPointB; // Move to next state
-                LogTools.Print(this, LogTools.LogType.Angle, "Please Select Point B");
+                GameManager.Instance.writeInstructions("Please Select Point B");
                 break;
 
             case CaptureState.WaitingForPointB:
